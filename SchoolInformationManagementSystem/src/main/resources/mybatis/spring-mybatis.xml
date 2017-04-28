@@ -9,16 +9,24 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd    
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-    <!-- 自动扫描 -->  
+                        
+                         
+    <!-- set the range to scan the component automatically -->
     <context:component-scan base-package="com.schoolinformationmanagementsystem" />  
-    <!-- 引入配置文件 -->  
+    
+    
+    <!-- 引入配置文件 --> 
+    <!-- set the location of the properties file about jdbc --> 
     <bean id="propertyConfigurer"  
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
         <property name="location" value="classpath:jdbc/jdbc.properties" />  
     </bean>  
   
+  
+  
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"  
         destroy-method="close">  
+        <!-- the name of the value should be equal to the name in jdbc.properties -->
         <property name="driverClassName" value="${db_driver}" />  
         <property name="url" value="${db_url}" />  
         <property name="username" value="${db_username}" />  
@@ -35,14 +43,18 @@
       <!--   <property name="maxWait" value="${db_maxWait}"></property>   -->
     </bean>  
   
+  
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+    	<!-- inject the dataSource which is written above -->
         <property name="dataSource" ref="dataSource" />  
-        <!-- 自动扫描mapping.xml文件 -->  
+        <!-- 自动扫描mapping.xml文件 --> 
+        <!-- set the location of the interface's xml file --> 
         <property name="mapperLocations" value="classpath:mybatis/mybatis-mapper/*.xml"></property>  
     </bean>  
   
-    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+   
+    <!-- set the range to scan to interface -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="com.schoolinformationmanagementsystem.myrepository" />  
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  

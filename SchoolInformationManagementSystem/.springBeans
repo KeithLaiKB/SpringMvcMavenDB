@@ -10,10 +10,11 @@
 		<config>src/main/resources/spring/applicationContext-dispatcher-servlet.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/mybatis/spring-mybatis.xml</config>
+		<config>src/main/resources/spring/spring-mvc.xml</config>
 		<config>src/main/resources/spring/applicationContext/applicationContext-transaction.xml</config>
 		<config>src/main/resources/spring/applicationContext/applicationContext-dao.xml</config>
 		<config>src/main/resources/spring/applicationContext/applicationContext-service.xml</config>
-		<config>src/main/resources/spring/mvc-dispatcher-servlet.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
