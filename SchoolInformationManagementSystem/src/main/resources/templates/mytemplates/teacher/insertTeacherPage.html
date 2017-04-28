@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+	<h1 th:inline="text">insert teacher</h1>
+	<form action="/controller/teacher/insertTeacher" method="post">
+		<table>
+			<caption>insert teacher</caption>
+			<tr>
+				<td>teacherId:</td>
+				<td><input type="text" name="teacherId"
+					placeholder="input the id here" /></td>
+			</tr>
+			<tr>
+				<td>teacherName:</td>
+				<td><input type="text" name="teacherName"
+					placeholder="input the teacherName here" /></td>
+			</tr>
+			<tr>
+				<td>gender:</td>
+				<td><input type="text" name="gender"
+					placeholder="input the gender here" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="submit "/></td>
+			</tr>
+
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans.xsd    
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/mvc   
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+
+
+    <!-- 1. 数据源 : DriverManagerDataSource -->  
+    <bean id="dataSource"  
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/school" />  
+        <property name="username" value="root" />  
+        <property name="password" value="123" />  
+    </bean>  
+
+    <!-- 引入jdbc配置文件 -->  
+    <context:property-placeholder location="classpath:jdbc/jdbc.properties" />  
+  
+  
+    <!-- 创建SqlSessionFactory，同时指定数据源 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+  
+    <!-- Mapper接口所在包名，Spring会自动查找其下的Mapper -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.schoolinformationmanagementsystem.myrepository" />  
+    </bean> 
+
+	<!-- 激活@Required @Autowired @Resource等标注 -->
+<!-- 	<context:annotation-config></context:annotation-config>
+
+	 DispatcherServlet上下文， 只 扫描@Controller注解标注的类，从而缩小了搜索的范围，也就是减少扫描的颗粒，并自动加载到spring容器中
+	 <context:component-scan base-package="com.example.hello"> 
+	 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
+	</context:component-scan>  -->
+		
+	<!-- 可以激活 RestController标签 -->
+	<mvc:annotation-driven />
+
+	<!-- 指定扫描com.example.hello 下的包 -->
+<!-- 	<context:component-scan base-package="com.example.hello" /> -->
+	<context:component-scan base-package="com.schoolinformationmanagementsystem" />
+	<!-- 指定输出时 使用 指定的文件夹下的指定那些后缀类型的视图文件 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="classpath:/templates/mytemplates" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>  

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定映射的接口 -->
+<mapper namespace="com.schoolinformationmanagementsystem.myrepository.TeacherRepository">
+	<!-- namespace="com.infomationmanagementsystem.daointerface.TeacherDaoInterface"> -->
+	<!-- 开启二级缓存 <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+
+
+	<resultMap id="MyMapTeacher" type="com.schoolinformationmanagementsystem.model.Teacher">
+		<id column="incre_teacher_id" property="id" />
+		<result column="teacher_id" property="teacherId" />
+		<result column="teacher_name" property="teacherName" />
+		<result column="gender" property="gender" />
+	</resultMap>
+
+
+
+	<!-- teacher -->
+	<select id="findAllTeachers" resultMap="MyMapTeacher">
+		SELECT
+		incre_teacher_id,teacher_id, teacher_name, gender FROM `teacher`
+	</select>
+
+	<select id="findTeacherById" parameterType="int" resultMap="MyMapTeacher">
+		SELECT
+		incre_teacher_id,teacher_id, teacher_name, gender FROM `teacher`
+		where incre_teacher_id=#{id}
+	</select>
+
+	<!-- 可以获得自增的id并放入 插进来的对象 -->
+	<!-- 当传入值是对象时 value的值对应对象的属性名 -->
+	<insert id="addTeacher" parameterType="com.schoolinformationmanagementsystem.model.Teacher"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into `teacher`(teacher_id,
+		teacher_name, gender) values(#{teacherId},#{teacherName},#{gender})
+	</insert>
+
+
+
+
+	<update id="updateTeacher" parameterType="com.schoolinformationmanagementsystem.model.Teacher">
+		update `teacher` set
+		teacher_name=#{teacherName},gender=#{gender}
+		where
+		incre_teacher_id=#{id}
+	</update>
+
+
+
+	<delete id="deleteTeacherById" parameterType="int">
+		delete from
+		`teacher`
+		where incre_teacher_id=#{iddddddd}
+	</delete>
+	<!-- <delete id="deleteTeacher" parameterType="com.infomationmanagementsystem.model.Teacher"> 
+		delete from `teacher` where where incre_teacher_id=#{id} </delete> -->
+</mapper>

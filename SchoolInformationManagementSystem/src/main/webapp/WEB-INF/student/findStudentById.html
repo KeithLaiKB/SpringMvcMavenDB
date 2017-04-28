@@ -1,0 +1,20 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">  
+    <head>  
+        <title>Hello World!</title>  
+    </head>  
+    <body>  
+        <h1 th:inline="text">Hello.v.2</h1>  
+        <p th:text="${hello}"></p>  
+        <form action="/controller/student/findStudentById" method="post">
+        	<table>
+        	<caption>find signle student by id</caption>
+        		<tr>
+        			<td>id:</td>
+        			<td><input type="text" name="id" placeholder="input the id here"/></td>
+        		</tr>
+        	</table>
+        </form>
+    </body>  
+</html>  

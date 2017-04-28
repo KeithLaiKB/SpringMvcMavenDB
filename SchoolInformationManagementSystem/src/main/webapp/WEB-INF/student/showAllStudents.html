@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+	<h1 th:inline="text">showAllStudentsList</h1>
+	<table>
+		<tr th:each="student : ${allStudentsList}">
+			<td th:text="${student.id}">1</td>
+			<td><a href="#" th:text="${student.stuId}">Title ...</a></td>
+			<td th:text="${student.stuName}">Text ...</td>
+			<td th:text="${student.gender}">Text ...</td>
+		</tr>
+	</table>
+</body>
+</html>
