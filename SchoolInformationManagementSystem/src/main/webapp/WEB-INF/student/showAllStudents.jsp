@@ -10,6 +10,7 @@
 <body>
 	<h1>showAllStudentsList</h1>
 	<table>
+	<!-- use tag c -->
 	<c:forEach var="student" items="${allStudentsList}" varStatus="status">   
 		<tr>
 			<td>${student.id}</td>

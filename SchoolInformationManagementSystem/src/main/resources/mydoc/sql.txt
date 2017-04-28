@@ -1,0 +1,59 @@
+
+
+drop database school;
+
+CREATE DATABASE IF NOT EXISTS school DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+
+
+create database school;
+
+create table student
+(
+	incre_stu_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	stu_id varchar(20) UNIQUE NOT NULL ,
+	stu_name varchar(20) NOT NULL,
+	gender varchar(10) NOT NULL 
+);
+insert into student(stu_id,stu_name,gender) values('201430098019','keith','male');
+
+
+create table teacher
+(
+	incre_teacher_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	teacher_id varchar(20) UNIQUE NOT NULL,
+	teacher_name varchar(25) NOT NULL,
+	gender varchar(10) NOT NULL
+
+);
+insert into teacher(teacher_id ,teacher_name,gender) values('20143089','hala','female');
+
+
+create table course
+(
+	course_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	course_name varchar(50) UNIQUE NOT NULL,
+	incre_teacher_id int  NOT NULL
+);
+insert into course(course_name,incre_teacher_id) values('java',1);
+
+
+create table major
+(
+	major_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	major_name varchar(50) UNIQUE NOT NULL
+
+);
+insert into major(major_name) values('software engineering');
+
+create table studentSelectCourse
+(
+	incre_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	incre_stu_id int NOT NULL,
+	course_id int NOT NULL,
+	select_time timestamp NOT NULL default CURRENT_TIMESTAMP,
+	CONSTRAINT uc_studentSelectMajorID UNIQUE (incre_stu_id ,course_id )
+	
+
+);
+insert into studentSelectCourse(incre_stu_id ,course_id ) values(2,8);
