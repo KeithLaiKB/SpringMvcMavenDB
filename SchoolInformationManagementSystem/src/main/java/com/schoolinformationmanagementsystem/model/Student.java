@@ -45,6 +45,12 @@ public class Student implements Serializable {
 
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ""+id+"\t"+stuId+"\t"+"stuName"+"\n"+gender+"\n";
+	}
+
 
 
 }

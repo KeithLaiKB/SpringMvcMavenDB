@@ -82,7 +82,10 @@ public class StudentController {
 		System.out.println("id:"+id1);
 		//
 		//
-		return studentService1.findStudentById(Integer.valueOf(id1));
+		Student stu1=studentService1.findStudentById(Integer.valueOf(id1));
+		System.out.println(stu1.getStuName());
+		//
+		return stu1;
 		//
 	}
 /*	public ModelAndView findStudentById(@RequestParam("id" ) String id1)

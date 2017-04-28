@@ -20,7 +20,7 @@ public class TestRestTemplateController {
 
     //@RequestMapping("/")
 	//@RequestMapping("/a") default get
-	@ResponseBody 
+	
 	@RequestMapping(value = "/toTest",method = RequestMethod.GET)
 	public String index() {
         return "test\n";
