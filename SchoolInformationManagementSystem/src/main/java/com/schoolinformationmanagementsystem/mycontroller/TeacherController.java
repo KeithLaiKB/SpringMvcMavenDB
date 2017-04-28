@@ -20,7 +20,7 @@ import com.schoolinformationmanagementsystem.myservice.TeacherService;
 @RequestMapping(value="/controller/teacher")
 public class TeacherController {
 
-//	@Autowired
+	@Autowired
 	private TeacherService teacherService1;
 	
 	
@@ -34,8 +34,9 @@ public class TeacherController {
 	@RequestMapping(value="/findAllTeachers", method=RequestMethod.GET)
 	public ModelAndView findAllTeachers()
 	{
-		List<Teacher> teacherList1=teacherService1.findAllTeachers();
 		System.out.println("find all teachers in TeacherController");
+		List<Teacher> teacherList1=teacherService1.findAllTeachers();
+		System.out.println("find all teachers in TeacherControlleraaa");
 		//指定 输出的页面 
 	    ModelAndView modelAndView1 = new ModelAndView();
 	    modelAndView1.setViewName("teacher/showAllTeachers");

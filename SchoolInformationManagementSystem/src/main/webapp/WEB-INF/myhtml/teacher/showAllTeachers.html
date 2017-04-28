@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+	<h1 th:inline="text">showAllTeachers</h1>
+	<table>
+		<tr th:each="teacher : ${allTeachersList}">
+			<td th:text="${teacher.id}">1</td>
+			<td><a href="#" th:text="${teacher.teacherId}">Title ...</a></td>
+			<td th:text="${teacher.teacherName}">Text ...</td>
+			<td th:text="${teacher.gender}">Text ...</td>
+			<td ><a th:href="@{/controller/teacher/toUpdateTeacher?(id=${teacher.id})}" th:text="update"></a> </td> 
+			<td ><a th:href="@{/controller/teacher/deleteTeacherById?(id=${teacher.id})}" th:text="delete"></a> </td>
+			<!-- <td ><a th:href="@{/controller/teacher/toUpdateTeacher?(id=${teacher.id})}" th:text="update ${teacher.id}"></a> </td> -->
+			<!-- <td ><a th:href="@{/controller/teacher/deleteTeacherById?(id=${teacher.id})}" th:text="delete ${teacher.id}"></a> </td> -->
+<!-- 			<td><a href="/controller/teacher/toUpdateTeacher?id="+"${teacher.id} th:text="${teacher.id}"></a></td> -->
+		</tr>
+	</table>
+</body>
+</html>
