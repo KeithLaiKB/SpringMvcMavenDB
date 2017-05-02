@@ -17,7 +17,6 @@ create table student
 );
 insert into student(stu_id,stu_name,gender) values('201430098019','keith','male');
 
-
 create table teacher
 (
 	incre_teacher_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +26,7 @@ create table teacher
 
 );
 insert into teacher(teacher_id ,teacher_name,gender) values('20143089','hala','female');
-
+insert into teacher(teacher_id ,teacher_name,gender) values('20143082','青菜','female');
 
 create table course
 (
@@ -45,6 +44,7 @@ create table major
 
 );
 insert into major(major_name) values('software engineering');
+insert into major(major_name) values('会计');
 
 create table studentSelectCourse
 (
@@ -57,3 +57,7 @@ create table studentSelectCourse
 
 );
 insert into studentSelectCourse(incre_stu_id ,course_id ) values(2,8);
+
+
+
+现在的数据库能够做到varchar(25) 可容纳25个汉字，当26个时会提示有问题的
