@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.schoolinformationmanagementsystem.model.Teacher;
-import com.schoolinformationmanagementsystem.myservice.StudentService;
 import com.schoolinformationmanagementsystem.myservice.TeacherService;
 
 
@@ -24,7 +22,7 @@ public class TeacherController {
 	private TeacherService teacherService1;
 	
 	
-	
+	// there is another method to autowired
 /*	 @Autowired
 	    public TeacherController(TeacherService teacherService1){
 	        this.teacherService1 = teacherService1;
@@ -94,10 +92,14 @@ public class TeacherController {
 	@RequestMapping(value="/toUpdateTeacher", method=RequestMethod.GET)
 	public ModelAndView toUpdateTeacher(@RequestParam("id" ) String id1)
 	{
+		//get the object
 		Teacher teacher1=teacherService1.findTeacherById(Integer.valueOf(id1));
-		//指定 输出的页面 
+		//
+		//
 	    ModelAndView modelAndView1 = new ModelAndView();
+		//set the name of view
 	    modelAndView1.setViewName("teacher/updateTeacherPage");
+		//add the object into model and view
 	    modelAndView1.addObject("teacher", teacher1);
 		//
 	    return modelAndView1;
@@ -118,12 +120,15 @@ public class TeacherController {
 		//
 		System.out.println("updateTeacher in TeacherController");
 		//
+		//
+		//
 		teacherService1.updateTeacher(teacher1);
 		//
 		//
-		//指定 输出的页面 
 	    ModelAndView modelAndView1 = new ModelAndView();
+		//set the name of view
 	    modelAndView1.setViewName("teacher/showTeacherInfoPage");
+		//add the object into model and view
 	    modelAndView1.addObject("teacher", teacher1);
 		//
 	    return modelAndView1;

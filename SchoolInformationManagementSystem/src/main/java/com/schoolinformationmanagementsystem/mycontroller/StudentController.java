@@ -3,8 +3,6 @@ package com.schoolinformationmanagementsystem.mycontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +21,8 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService1;
 	
+	
+	// there is another method to autowired
 /*	 @Autowired
 	 public StudentController(StudentService studentService1){
 	        this.studentService1 = studentService1;
@@ -30,32 +30,30 @@ public class StudentController {
 	
 	
 	
-	//尝试  页面路径直接来这里 进行获取数据的操作  
+	//return the model and view to resolver
 	@RequestMapping(value="/findAllStudents", method=RequestMethod.GET)
 	public ModelAndView findAllStudents()
 	{
 		//
 		System.out.println("sdfasd");
 		//
-		//获取数据 
+		//get the object
 		List<Student> stuList=studentService1.findAllStudents();
 		//
-		//
+		//test the object
 		System.out.println("size:"+stuList.size()+"\n"+stuList.get(0).getStuName());
-		//
-		//s
 		System.out.println("sdfasdaaaaaaaaa");
-
+		//
 		//
 		ModelAndView modelAndView1=new ModelAndView();
+		//set the name of view
 		modelAndView1.setViewName("/student/showAllStudents");
+		//add the object into model and view
 		modelAndView1.addObject("allStudentsList", stuList);
 		//
 		return modelAndView1;
 		
 	}
-	
-	
 	
 	
 	
@@ -73,14 +71,12 @@ public class StudentController {
 	
 	
 	
-	
-	
-	//尝试  页面路径直接来这里 进行获取数据的操作  
+	//this function return a Student as page 
+	//the 'id' in @RequestParam("id" )  should be equal to the name of the variable in the page which sent the request to this controller
 	@RequestMapping(value="/findStudentById", method=RequestMethod.POST)
 	public Student findStudentById(@RequestParam("id" ) String id1)
 	{
 		System.out.println("id:"+id1);
-		//
 		//
 		Student stu1=studentService1.findStudentById(Integer.valueOf(id1));
 		System.out.println(stu1.getStuName());
@@ -88,14 +84,5 @@ public class StudentController {
 		return stu1;
 		//
 	}
-/*	public ModelAndView findStudentById(@RequestParam("id" ) String id1)
-	{
-		System.out.println("id:"+id1);
-		//
-		ModelAndView modelAndView1=new ModelAndView();
-		modelAndView1.setViewName("/student/showAllStudents");
-		modelAndView1.addObject("student", studentService1.findStudentById(Integer.valueOf(id1)));
-		//
-		return modelAndView1;
-	}*/
+
 }

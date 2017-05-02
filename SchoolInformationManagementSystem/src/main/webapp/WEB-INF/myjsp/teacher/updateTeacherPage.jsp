@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 th:inline="text">insert teacher</h1>
+	<h1>insert teacher</h1>
 	<form action="/controller/teacher/updateTeacher" method="post">
 		<table>
 			<caption>update teacher</caption>

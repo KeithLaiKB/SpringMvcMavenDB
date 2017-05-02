@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 th:inline="text">show Teacher Info</h1>
+	<h1>show Teacher Info</h1>
 	<table>
 		<tr>
 			<td>${teacher.id}</td>

@@ -8,7 +8,7 @@
 	<h2>Hello World!</h2>
 	<p>student operation</p>
 	<a href="/controller/student/findAllStudents">find all students</a>
-	<a href="/controller/student/toFindStudentById">find single student by id</a></br></br>
+	<a href="/controller/student/toFindStudentById">find single student by id</a><br/>
 	<p>teacher operation</p>
 	<a href="/controller/teacher/findAllTeachers">find all teachers</a>
 	<a href="/controller/teacher/toInsertTeacher">to insert teacher</a>

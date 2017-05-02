@@ -9,7 +9,7 @@ import com.schoolinformationmanagementsystem.model.Teacher;
 import com.schoolinformationmanagementsystem.myrepository.TeacherRepository;
 import com.schoolinformationmanagementsystem.myservice.TeacherService;
 
-//最好写上 接口的名字 ，当然不写也可以，不过不写的话代码的可读性肯能没那么好
+//you'd better write the name of interface ,which could make the code be easy to read,though you can don't write it
 @Service(value = "TeacherService")
 public class TeacherServiceImpl implements TeacherService{
 

@@ -13,13 +13,13 @@ public class GeneratorExecution {
     public static void generator(){  
           
         List<String> warnings=new ArrayList<String>();  
-        try {  
-//      导入配置表mybatis-generator.xml  
+        try {   
+        //specify the location of the  config file to generator
         File configFile=new File("./src/main/resources/mybatis/mybatis-generator/mybatis-generator.xml");  
-//      解析  
+        //parser the file
         ConfigurationParser cp=new ConfigurationParser(warnings);  
         Configuration config=cp.parseConfiguration(configFile);  
-//      是否覆盖  
+        //set whether the file could be override
         DefaultShellCallback dsc=new DefaultShellCallback(true);  
         MyBatisGenerator mg=new MyBatisGenerator(config, dsc, warnings);  
         mg.generate(null);  

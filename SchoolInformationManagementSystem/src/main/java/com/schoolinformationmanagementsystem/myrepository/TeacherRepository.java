@@ -2,14 +2,19 @@ package com.schoolinformationmanagementsystem.myrepository;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Repository;
 
 import com.schoolinformationmanagementsystem.model.Teacher;
 
+
 /*
- * 接口 
+ * interface 
  * 
- * mybatis-mapper中的 xml里面 会需要 找到  TeacherDaoInterface
+ * 
+ * the xml in mybatis-mapper would find this file 
+ * the file here seems like StudentDaoInterface of dao
+ * 
  * 
  * */
 

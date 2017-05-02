@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 th:inline="text">showAllStudentsList</h1>
+	<h1>showAllStudentsList</h1>
 	<table>
 	<c:forEach var="student" items="${sessionScope.allStudentsList}" varStatus="status">   
 		<tr>
