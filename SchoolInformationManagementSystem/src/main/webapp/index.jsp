@@ -18,7 +18,7 @@
 	<br/>
 	
 	<p>Course operation</p>
-	<a href="/controller/course/findAllCourses">find all courses</a>
-	
+	<a href="/controller/course/findAllCourses1">find all courses</a>
+	<a href="/controller/course/findAllCourses2">find all courses(jason)</a>
 </body>
 </html>
