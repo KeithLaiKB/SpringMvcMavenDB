@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定映射的接口 -->
+<mapper namespace="com.schoolinformationmanagementsystem.myrepository.MajorRepository">
+	<!-- namespace="com.infomationmanagementsystem.daointerface.StudentDaoInterface"> -->
+	<!-- 开启二级缓存 <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+
+
+
+	<!-- 设定映射出来的类，以及数据库的属性列名 与 程序中模型 的类中 的 属性名 对应 -->
+	<!--配置一个resultMap 指定返回的类型 -->
+	<resultMap id="MyMapMajor" type="com.schoolinformationmanagementsystem.model.Major">
+		<id column="major_id" property="majorId" />
+		<result column="major_name" property="majorName" />
+	</resultMap>
+
+	<!-- student -->
+	<!-- 查询 -->
+	<!-- 设置使用的返回的映射类，也就是之前设置的 result map id -->
+	<select id="findAllMajors" resultMap="MyMapMajor">
+		SELECT major_id,
+		major_name FROM `major`
+	</select>
+
+	<select id="findMajorById" parameterType="int" resultMap="MyMapMajor">
+		SELECT
+		major_id, major_name FROM `major`
+		where major_id=#{id}
+	</select>
+
+
+ 	<select id="countAllMajorListNum" resultType="java.lang.Integer">
+		SELECT count(1) FROM `major`
+	</select> 
+	
+	<select id="findPartialMajorListByStRowIdAndRecordNum" parameterType="java.util.Map" resultMap="MyMapMajor">
+		SELECT major_id,
+		major_name FROM `major` LIMIT #{stRowId},#{recordNum} 
+	</select>
+
+	<!-- 2017.04.24 如果使用 SELECT incre_stu_id, stu_id, stu_name, gender FROM 
+		`student` where incre_stu_id=#{iddddd} 不管输入什么参数，打印出的SQL都是这样的。 SELECT incre_stu_id, 
+		stu_id, stu_name, gender FROM `student` where incre_stu_id=? 这是因为MyBatis启用了预编译功能，在SQL执行前，会先将上面的SQL发送给数据库进行编译；执行时，直接使用编译好的SQL，替换占位符“?”就可以了。因为SQL注入只能对编译过程起作用，所以这样的方式就很好地避免了SQL注入的问题。 -->
+	<!-- 如果使用SELECT incre_stu_id, stu_id, stu_name, gender FROM `student` where 
+		incre_stu_id=${iddddd} 如果iddddd给的值是3 ,打印出的SQL都是这样的。 SELECT incre_stu_id, 
+		stu_id, stu_name, gender FROM `student` where incre_stu_id=3 这样是无法阻止SQL注入的。在MyBatis中，“${xxx}”这样格式的参数会直接参与SQL编译，从而不能避免注入攻击。 
+		!!!但涉及到动态表名和列名时，只能使用“${xxx}”这样的参数格式。所以，这样的参数需要我们在代码中手工进行处理来防止注入。 -->
+	<!-- !! 在编写MyBatis的映射语句时，尽量采用“#{xxx}”这样的格式。若不得不使用“${xxx}”这样的参数，要手工地做好过滤工作，来防止SQL注入攻击。 
+		#{}：相当于JDBC中的PreparedStatement ${}：是输出变量的值 简单说，#{}是经过预编译的，是安全的；${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入。 -->
+	<!-- set the input type of the parameter, the #{id} here should had better 
+		match with the name of the parameter input from findStudentById(int id) in 
+		StudentDaoInterface.java -->
+<!-- 	<select id="findStudentById" parameterType="int" resultMap="MyMapStudent">
+		SELECT incre_stu_id, stu_id, stu_name, gender FROM `student` where
+		incre_stu_id=#{iddddd}
+	</select>
+ -->
+ 	<!-- 可以获得自增的id并放入 插进来的对象 -->
+	<!-- 当传入值是对象时 value的值对应对象的属性名 -->
+	<insert id="addMajor" parameterType="com.schoolinformationmanagementsystem.model.Major"
+		useGeneratedKeys="true" keyProperty="majorId">
+		insert into `major`(
+		major_name) values(#{majorName})
+	</insert>
+
+
+</mapper>

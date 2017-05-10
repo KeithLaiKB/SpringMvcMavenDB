@@ -31,14 +31,14 @@
 
 
 
-
-<!-- 		<dependency>
+		<!-- support <script type="text/javascript" src="${pageContext.request.contextPath}/.../..."></script> -->
+ 		<dependency>
 
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.2.1-b03</version>
 
-		</dependency> -->
+		</dependency> 
 
 		<!-- 必须，没有的话 会报红，但是又暂时能正常运行 -->
  		<dependency>

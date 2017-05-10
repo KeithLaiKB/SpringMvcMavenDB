@@ -8,19 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>showAllStudentList</h1>
+<script type="text/javascript">
+
+</script>  
+	<h1>showAllMajorList</h1>
 	<table>
+	
 	<!-- use tag c -->
-	<c:forEach var="teacher" items="${allTeacherList}" varStatus="status">   
+ 	<c:forEach var="major" items="${allMajorList}" varStatus="status">   
 		<tr>
-			<td>${teacher.id}</td>
-			<td><a href="#">${teacher.teacherId}</a></td>
-			<td>${teacher.teacherName}</td>
-			<td>${teacher.gender}</td>
-			<td ><a href="/controller/teacher/toUpdateTeacher?id=${teacher.id}" >update</a> </td> 
-			<td ><a href="/controller/teacher/deleteTeacherById?id=${teacher.id}">delete</a> </td>
+			<td>${major.majorId}</td>
+			<td><a href="#">${major.majorName}</a></td>
 		</tr>
-	</c:forEach>
+	</c:forEach> 
 	</table>
 </body>
 </html>

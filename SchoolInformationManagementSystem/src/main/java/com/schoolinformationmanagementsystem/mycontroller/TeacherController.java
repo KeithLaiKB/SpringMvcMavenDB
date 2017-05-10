@@ -39,7 +39,7 @@ public class TeacherController {
 	    ModelAndView modelAndView1 = new ModelAndView();
 	    modelAndView1.setViewName("teacher/showAllTeachers");
 	    //设定传给页面的值
-	    modelAndView1.addObject("allTeachersList",teacherList1 );
+	    modelAndView1.addObject("allTeacherList",teacherList1 );
 	    return modelAndView1;
 		
 	}

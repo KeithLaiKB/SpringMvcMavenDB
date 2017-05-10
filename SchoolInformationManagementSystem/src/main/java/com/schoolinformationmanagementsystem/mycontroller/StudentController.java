@@ -49,7 +49,7 @@ public class StudentController {
 		//set the name of view
 		modelAndView1.setViewName("/student/showAllStudents");
 		//add the object into model and view
-		modelAndView1.addObject("allStudentsList", stuList);
+		modelAndView1.addObject("allStudentList", stuList);
 		//
 		return modelAndView1;
 		
