@@ -6,7 +6,7 @@
 	<!-- namespace="com.infomationmanagementsystem.daointerface.TeacherDaoInterface"> -->
 	<!-- 开启二级缓存 <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
 
-
+<!-- 这里的column的值对应 select 后面的名字  假如查了另外一个表明的属性 例如 Course.name 此时最好在select中 为他起个别名如course_name 然后再column中的值也要设置相同为course_name 当然此时的type可能就需要自己设置一个vo了，property则取vo中的属性名  -->
 	<resultMap id="MyMapTeacher" type="com.schoolinformationmanagementsystem.model.Teacher">
 		<id column="incre_teacher_id" property="id" />
 		<result column="teacher_id" property="teacherId" />
